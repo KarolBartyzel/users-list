@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import Search from './Components/Search';
+import Users from './Components/Users';
+import { fetchUsers } from './Api';
+
 import './App.css';
 
 function App() {
+  const [userSearchValue, setUserSearchValue] = React.useState('');
+  const [users, setUsers] = React.useState([]);
+
+  React.useEffect(() => {
+    fetchUsers().then(setUsers);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Users-List">
+        <h1>Users List</h1>
+        <Search value={userSearchValue} setValue={setUserSearchValue} />
+        {users.length > 0 && <Users users={users.filter((user) => user.name.toLowerCase().includes(userSearchValue.toLowerCase()))} />}
+      </div>
     </div>
   );
 }

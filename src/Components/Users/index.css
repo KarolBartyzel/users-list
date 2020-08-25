@@ -1,0 +1,10 @@
+.Users {
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.No-Users {
+  margin: 10px;
+}

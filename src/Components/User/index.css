@@ -1,0 +1,12 @@
+.User {
+  margin: 5px;
+}
+
+.User-Name {
+  font-weight: 600;
+}
+
+.User-Username {
+  color: lightgray;
+  margin-left: 20px;
+}
